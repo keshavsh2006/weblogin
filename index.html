@@ -5,106 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Website</title>
+    <title>MyWebsite</title>
 
-    <!-- Boxicons -->
+    <link rel="stylesheet" href="webiste.css">
+
     <link
         href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css"
         rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="webiste.css">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- Loading Screen -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <h2>MyWebsite</h2>
+            <p>Loading...</p>
+        </div>
+    </div>
 
+    <!-- ================= HEADER ================= -->
     <header>
 
-        <a href="#" class="logo">
-            MyWebsite
-        </a>
+        <a href="#" class="logo">MyWebsite</a>
 
-        <nav>
+        <!-- Navigation -->
+        <nav class="main-nav">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <a href="#collection">Collection</a>
         </nav>
 
-        <div class="header-right">
+        <!-- Login / Profile -->
+        <div class="user-auth">
 
-            <!-- Theme Button -->
-            <button
-                type="button"
-                class="theme-btn"
-                id="themeBtn"
-                title="Change theme">
-
-                <i class="bxf bx-moon"></i>
-
-            </button>
-
-
-            <!-- Login -->
-            <button
-                type="button"
-                class="login-btn-modal">
-
+            <button type="button" class="login-btn-modal">
                 Login
-
             </button>
 
-
-            <!-- Profile -->
             <div class="portfolio-box">
 
                 <button
                     type="button"
                     class="avatar-circle"
-                    id="avatarBtn">
-
-                    C
-
+                    aria-label="Open profile menu"
+                    aria-expanded="false">
+                    U
                 </button>
 
-
-                <!-- Profile Dropdown -->
-                <div class="dropdown" id="profileDropdown">
+                <div class="dropdown">
 
                     <div class="dropdown-user">
-
-                        <div class="dropdown-avatar">
-                            C
-                        </div>
-
-                        <div>
-                            <strong id="dropdownName">
-                                User
-                            </strong>
-
-                            <small id="dropdownEmail">
-                                user@email.com
-                            </small>
-                        </div>
-
+                        <strong class="dropdown-name">User</strong>
+                        <span class="dropdown-email">
+                            user@example.com
+                        </span>
                     </div>
 
-                    <div class="dropdown-divider"></div>
-
-                    <a href="#" id="accountBtn">
-                        <i class="bxf bx-user"></i>
+                    <button
+                        type="button"
+                        class="dropdown-item account-btn">
                         My Account
-                    </a>
+                    </button>
 
-                    <a href="#" id="logoutBtn">
-                        <i class="bxf bx-log-out"></i>
+                    <button
+                        type="button"
+                        class="dropdown-item logout-btn">
                         Logout
-                    </a>
+                    </button>
 
                 </div>
-
             </div>
 
         </div>
@@ -112,46 +84,57 @@
     </header>
 
 
-    <!-- ================= HOME ================= -->
+    <!-- ================= LOGIN SCREEN ================= -->
 
-    <main>
+    <div class="login-screen">
 
-        <section class="hero" id="home">
+        <div class="login-screen-content">
+
+            <h1>Welcome to <span>MyWebsite</span></h1>
+
+            <p>
+                Please login or create an account to explore the website.
+            </p>
+
+            <button type="button" class="open-login-btn">
+                Login to Explore
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN WEBSITE ================= -->
+
+    <main class="protected-content">
+
+        <!-- HOME -->
+        <section id="home" class="hero-section">
 
             <div class="hero-content">
 
-                <span class="welcome-text">
-                    Welcome 👋
-                </span>
+                <p class="hero-small">
+                    Welcome to
+                </p>
 
                 <h1>
-                    Welcome to
-                    <span>MyWebsite</span>
+                    My<span>Website</span>
                 </h1>
 
-                <p>
-                    Explore my website and discover something amazing.
+                <p class="hero-description">
+                    Explore our website and discover something amazing.
                 </p>
 
                 <div class="hero-buttons">
 
-                    <button
-                        type="button"
-                        class="primary-btn"
-                        id="exploreBtn">
+                    <a href="#collection" class="hero-btn">
+                        Explore Collection
+                    </a>
 
-                        Explore Website
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="secondary-btn"
-                        id="heroLoginBtn">
-
-                        Login
-
-                    </button>
+                    <a href="#about" class="hero-btn secondary">
+                        Learn More
+                    </a>
 
                 </div>
 
@@ -160,77 +143,49 @@
         </section>
 
 
-        <!-- ================= ABOUT ================= -->
+        <!-- ABOUT -->
+        <section id="about" class="content-section">
 
-        <section class="content-section" id="about">
+            <div class="section-title">
+                <p>About Us</p>
+                <h2>What We Offer</h2>
+            </div>
 
-            <div class="section-content">
+            <div class="feature-grid">
 
-                <span class="section-tag">
-                    ABOUT
-                </span>
+                <div class="feature-card">
+                    <i class="bxf bx-user"></i>
 
-                <h2>
-                    Something About This Website
-                </h2>
+                    <h3>Personal Profile</h3>
 
-                <p>
-                    This is a modern responsive website built with
-                    HTML, CSS and JavaScript.
-                </p>
-
-                <div class="feature-grid">
-
-                    <div class="feature-card">
-
-                        <div class="feature-icon">
-                            <i class="bxf bx-code-alt"></i>
-                        </div>
-
-                        <h3>
-                            Modern Design
-                        </h3>
-
-                        <p>
-                            Clean and modern user interface.
-                        </p>
-
-                    </div>
+                    <p>
+                        Create your account and manage your profile
+                        easily.
+                    </p>
+                </div>
 
 
-                    <div class="feature-card">
+                <div class="feature-card">
+                    <i class="bxf bx-star"></i>
 
-                        <div class="feature-icon">
-                            <i class="bxf bx-mobile"></i>
-                        </div>
+                    <h3>Explore</h3>
 
-                        <h3>
-                            Responsive
-                        </h3>
-
-                        <p>
-                            Works smoothly on mobile and desktop.
-                        </p>
-
-                    </div>
+                    <p>
+                        Explore different sections and discover
+                        interesting content.
+                    </p>
+                </div>
 
 
-                    <div class="feature-card">
+                <div class="feature-card">
+                    <i class="bxf bx-lock"></i>
 
-                        <div class="feature-icon">
-                            <i class="bxf bx-bolt"></i>
-                        </div>
+                    <h3>Private Access</h3>
 
-                        <h3>
-                            Fast
-                        </h3>
-
-                        <p>
-                            Lightweight frontend experience.
-                        </p>
-
-                    </div>
-
+                    <p>
+                        Only logged-in users can access the main
+                        website.
+                    </p>
                 </div>
 
             </div>
@@ -238,72 +193,58 @@
         </section>
 
 
-        <!-- ================= COLLECTION ================= -->
+        <!-- COLLECTION -->
+        <section id="collection" class="content-section">
 
-        <section class="content-section collection-section" id="collection">
+            <div class="section-title">
+                <p>Our Collection</p>
+                <h2>Explore</h2>
+            </div>
 
-            <div class="section-content">
+            <div class="collection-grid">
 
-                <span class="section-tag">
-                    COLLECTION
-                </span>
-
-                <h2>
-                    My Collection
-                </h2>
-
-                <div class="collection-grid">
-
-                    <div class="collection-card">
-
-                        <span>
-                            01
-                        </span>
-
-                        <h3>
-                            Project One
-                        </h3>
-
-                        <p>
-                            My first amazing project.
-                        </p>
-
+                <div class="collection-card">
+                    <div class="card-icon">
+                        <i class="bxf bx-image"></i>
                     </div>
 
+                    <h3>Gallery</h3>
 
-                    <div class="collection-card">
+                    <p>
+                        Explore our beautiful collection.
+                    </p>
 
-                        <span>
-                            02
-                        </span>
+                    <a href="#">View Collection</a>
+                </div>
 
-                        <h3>
-                            Project Two
-                        </h3>
 
-                        <p>
-                            Another interesting project.
-                        </p>
-
+                <div class="collection-card">
+                    <div class="card-icon">
+                        <i class="bxf bx-code"></i>
                     </div>
 
+                    <h3>Projects</h3>
 
-                    <div class="collection-card">
+                    <p>
+                        Check out our latest projects and work.
+                    </p>
 
-                        <span>
-                            03
-                        </span>
+                    <a href="#">View Projects</a>
+                </div>
 
-                        <h3>
-                            Project Three
-                        </h3>
 
-                        <p>
-                            More projects coming soon.
-                        </p>
-
+                <div class="collection-card">
+                    <div class="card-icon">
+                        <i class="bxf bx-rocket"></i>
                     </div>
 
+                    <h3>More</h3>
+
+                    <p>
+                        More exciting features are coming soon.
+                    </p>
+
+                    <a href="#">Explore More</a>
                 </div>
 
             </div>
@@ -311,252 +252,180 @@
         </section>
 
 
-        <!-- ================= CONTACT ================= -->
+        <!-- CONTACT -->
+        <section id="contact" class="content-section contact-section">
 
-        <section class="content-section contact-section" id="contact">
-
-            <div class="section-content">
-
-                <span class="section-tag">
-                    CONTACT
-                </span>
-
-                <h2>
-                    Let's Connect
-                </h2>
-
-                <p>
-                    Thanks for visiting my website.
-                </p>
-
-                <button
-                    type="button"
-                    class="primary-btn"
-                    id="contactBtn">
-
-                    Contact Me
-
-                </button>
-
+            <div class="section-title">
+                <p>Get In Touch</p>
+                <h2>Contact Us</h2>
             </div>
 
+            <p>
+                Thanks for exploring MyWebsite.
+            </p>
+
+            <button class="contact-btn">
+                Contact Us
+            </button>
+
         </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+            <p>
+                © 2026 MyWebsite. All rights reserved.
+            </p>
+        </footer>
 
     </main>
 
 
     <!-- ================= AUTH MODAL ================= -->
 
-    <div class="modal-overlay auth-modal">
+    <div
+        class="auth-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true">
 
-        <div class="auth-card">
+        <button
+            type="button"
+            class="close-btn-modal"
+            aria-label="Close authentication modal">
 
-            <!-- Close -->
-            <button
-                type="button"
-                class="close-btn-modal">
+            <i class="bxf bx-x"></i>
 
-                <i class="bxf bx-x"></i>
-
-            </button>
+        </button>
 
 
-            <!-- ================= LOGIN ================= -->
+        <!-- LOGIN FORM -->
 
-            <div class="form-box login">
+        <div class="form-box login">
 
-                <div class="form-header">
+            <h2>Login</h2>
 
-                    <span class="form-icon">
-                        <i class="bxf bx-user"></i>
-                    </span>
+            <form class="login-form" novalidate>
 
-                    <h2>
-                        Welcome Back
-                    </h2>
+                <div class="input-box">
 
-                    <p>
-                        Login to continue
-                    </p>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        autocomplete="email"
+                        required>
+
+                    <i class="bxf bx-envelope"></i>
 
                 </div>
 
 
-                <form id="loginForm">
+                <div class="input-box">
 
-                    <div class="input-box">
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        minlength="6"
+                        required>
 
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            required>
+                    <i class="bxf bx-lock"></i>
 
-                        <i class="bxf bx-envelope"></i>
-
-                    </div>
-
-
-                    <div class="input-box">
-
-                        <input
-                            type="password"
-                            name="password"
-                            id="loginPassword"
-                            placeholder="Password"
-                            required>
-
-                        <i class="bxf bx-lock"></i>
-
-                        <button
-                            type="button"
-                            class="password-toggle"
-                            data-target="loginPassword">
-
-                            <i class="bxf bx-show"></i>
-
-                        </button>
-
-                    </div>
+                </div>
 
 
-                    <button
-                        type="submit"
-                        class="btn">
+                <p class="form-message login-message"></p>
 
+
+                <button type="submit" class="btn">
+                    Login
+                </button>
+
+
+                <p>
+                    Don't have an account?
+
+                    <a href="#" class="register-link">
+                        Register
+                    </a>
+                </p>
+
+            </form>
+
+        </div>
+
+
+        <!-- REGISTER FORM -->
+
+        <div class="form-box register">
+
+            <h2>Register</h2>
+
+            <form class="register-form" novalidate>
+
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        autocomplete="name"
+                        minlength="2"
+                        required>
+
+                    <i class="bxf bx-user"></i>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        autocomplete="email"
+                        required>
+
+                    <i class="bxf bx-envelope"></i>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required>
+
+                    <i class="bxf bx-lock"></i>
+
+                </div>
+
+
+                <p class="form-message register-message"></p>
+
+
+                <button type="submit" class="btn">
+                    Register
+                </button>
+
+
+                <p>
+                    Already have an account?
+
+                    <a href="#" class="login-link">
                         Login
+                    </a>
+                </p>
 
-                    </button>
-
-
-                    <p class="form-switch">
-
-                        Don't have an account?
-
-                        <a
-                            href="#"
-                            class="register-link">
-
-                            Register
-
-                        </a>
-
-                    </p>
-
-                    <div
-                        class="form-message"
-                        id="loginMessage">
-                    </div>
-
-                </form>
-
-            </div>
-
-
-            <!-- ================= REGISTER ================= -->
-
-            <div class="form-box register">
-
-                <div class="form-header">
-
-                    <span class="form-icon">
-                        <i class="bxf bx-user-plus"></i>
-                    </span>
-
-                    <h2>
-                        Create Account
-                    </h2>
-
-                    <p>
-                        Register to get started
-                    </p>
-
-                </div>
-
-
-                <form id="registerForm">
-
-                    <div class="input-box">
-
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="Full Name"
-                            required>
-
-                        <i class="bxf bx-user"></i>
-
-                    </div>
-
-
-                    <div class="input-box">
-
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Email"
-                            required>
-
-                        <i class="bxf bx-envelope"></i>
-
-                    </div>
-
-
-                    <div class="input-box">
-
-                        <input
-                            type="password"
-                            name="password"
-                            id="registerPassword"
-                            placeholder="Password"
-                            required>
-
-                        <i class="bxf bx-lock"></i>
-
-                        <button
-                            type="button"
-                            class="password-toggle"
-                            data-target="registerPassword">
-
-                            <i class="bxf bx-show"></i>
-
-                        </button>
-
-                    </div>
-
-
-                    <button
-                        type="submit"
-                        class="btn">
-
-                        Create Account
-
-                    </button>
-
-
-                    <p class="form-switch">
-
-                        Already have an account?
-
-                        <a
-                            href="#"
-                            class="login-link">
-
-                            Login
-
-                        </a>
-
-                    </p>
-
-
-                    <div
-                        class="form-message"
-                        id="registerMessage">
-                    </div>
-
-                </form>
-
-            </div>
+            </form>
 
         </div>
 
@@ -566,81 +435,45 @@
     <!-- ================= ACCOUNT MODAL ================= -->
 
     <div
-        class="modal-overlay account-modal"
-        id="accountModal">
+        class="account-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true">
 
         <div class="account-card">
 
             <button
                 type="button"
-                class="account-close"
-                id="accountClose">
+                class="close-account-btn">
 
                 <i class="bxf bx-x"></i>
 
             </button>
 
+            <h2>My Account</h2>
 
-            <div class="big-avatar" id="accountAvatar">
-                C
+            <div class="account-avatar">
+                U
             </div>
 
-            <h2 id="accountName">
-                User
-            </h2>
-
-            <p id="accountEmail">
-                user@email.com
+            <p>
+                <strong>Name:</strong>
+                <span class="account-name">User</span>
             </p>
 
-
-            <div class="account-info">
-
-                <div>
-                    <span>Name</span>
-                    <strong id="accountNameInfo">
-                        User
-                    </strong>
-                </div>
-
-                <div>
-                    <span>Email</span>
-                    <strong id="accountEmailInfo">
-                        user@email.com
-                    </strong>
-                </div>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="account-logout"
-                id="accountLogout">
-
-                Logout
-
-            </button>
+            <p>
+                <strong>Email:</strong>
+                <span class="account-email">
+                    user@example.com
+                </span>
+            </p>
 
         </div>
 
     </div>
 
 
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <p>
-            © 2026 MyWebsite. All Rights Reserved.
-        </p>
-
-    </footer>
-
-
-    <!-- JavaScript -->
     <script src="webiste.js"></script>
 
 </body>
-
 </html>

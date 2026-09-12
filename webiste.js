@@ -2,53 +2,86 @@
    ELEMENTS
 ===================================================== */
 
-const authModal = document.querySelector(".auth-modal");
-const authCard = document.querySelector(".auth-card");
+const authModal =
+    document.querySelector(".auth-modal");
 
-const loginBtnModal = document.querySelector(".login-btn-modal");
-const heroLoginBtn = document.querySelector("#heroLoginBtn");
+const loginBtnModal =
+    document.querySelector(".login-btn-modal");
 
-const closeBtnModal = document.querySelector(".close-btn-modal");
+const openLoginBtn =
+    document.querySelector(".open-login-btn");
 
-const registerLink = document.querySelector(".register-link");
-const loginLink = document.querySelector(".login-link");
+const closeBtnModal =
+    document.querySelector(".close-btn-modal");
 
-const portfolioBox = document.querySelector(".portfolio-box");
-const avatarBtn = document.querySelector("#avatarBtn");
+const registerLink =
+    document.querySelector(".register-link");
 
-const profileDropdown = document.querySelector("#profileDropdown");
+const loginLink =
+    document.querySelector(".login-link");
 
-const accountBtn = document.querySelector("#accountBtn");
-const accountModal = document.querySelector("#accountModal");
-const accountClose = document.querySelector("#accountClose");
+const loginForm =
+    document.querySelector(".login-form");
 
-const logoutBtn = document.querySelector("#logoutBtn");
-const accountLogout = document.querySelector("#accountLogout");
+const registerForm =
+    document.querySelector(".register-form");
 
-const themeBtn = document.querySelector("#themeBtn");
+const loginMessage =
+    document.querySelector(".login-message");
 
-const exploreBtn = document.querySelector("#exploreBtn");
-const contactBtn = document.querySelector("#contactBtn");
+const registerMessage =
+    document.querySelector(".register-message");
 
-const loginForm = document.querySelector("#loginForm");
-const registerForm = document.querySelector("#registerForm");
 
-const loginMessage = document.querySelector("#loginMessage");
-const registerMessage = document.querySelector("#registerMessage");
+/* PROFILE */
+
+const portfolioBox =
+    document.querySelector(".portfolio-box");
+
+const avatarCircle =
+    document.querySelector(".avatar-circle");
+
+const dropdown =
+    document.querySelector(".dropdown");
+
+const dropdownName =
+    document.querySelector(".dropdown-name");
+
+const dropdownEmail =
+    document.querySelector(".dropdown-email");
+
+const accountBtn =
+    document.querySelector(".account-btn");
+
+const logoutBtn =
+    document.querySelector(".logout-btn");
+
+
+/* ACCOUNT MODAL */
+
+const accountModal =
+    document.querySelector(".account-modal");
+
+const closeAccountBtn =
+    document.querySelector(".close-account-btn");
+
+const accountAvatar =
+    document.querySelector(".account-avatar");
+
+const accountName =
+    document.querySelector(".account-name");
+
+const accountEmail =
+    document.querySelector(".account-email");
 
 
 /* =====================================================
-   STORAGE KEYS
+   STORAGE
 ===================================================== */
 
-const USERS_KEY = "myWebsiteUsers";
-const SESSION_KEY = "myWebsiteLoggedInUser";
-const THEME_KEY = "myWebsiteTheme";
+const USERS_KEY = "demoUsers";
+const SESSION_KEY = "loggedInUser";
 
-
-/* =====================================================
-   HELPER FUNCTIONS
-===================================================== */
 
 function getUsers() {
 
@@ -58,12 +91,11 @@ function getUsers() {
             localStorage.getItem(USERS_KEY)
         ) || [];
 
-    } catch (error) {
+    } catch {
 
         return [];
 
     }
-
 }
 
 
@@ -77,7 +109,7 @@ function saveUsers(users) {
 }
 
 
-function getCurrentUser() {
+function getSession() {
 
     try {
 
@@ -85,79 +117,54 @@ function getCurrentUser() {
             localStorage.getItem(SESSION_KEY)
         );
 
-    } catch (error) {
+    } catch {
 
         return null;
 
     }
-
 }
 
 
-function saveCurrentUser(user) {
+function saveSession(user) {
 
     localStorage.setItem(
         SESSION_KEY,
-        JSON.stringify(user)
+        JSON.stringify({
+            name: user.name,
+            email: user.email
+        })
     );
 
 }
 
 
-function removeCurrentUser() {
+function clearSession() {
 
     localStorage.removeItem(SESSION_KEY);
 
 }
 
 
-function getInitial(name) {
-
-    if (!name) {
-        return "U";
-    }
-
-    return name
-        .trim()
-        .charAt(0)
-        .toUpperCase();
-
-}
-
-
 /* =====================================================
-   MESSAGE
+   MESSAGES
 ===================================================== */
 
-function showMessage(element, message, type) {
-
-    if (!element) {
-        return;
-    }
+function setMessage(
+    element,
+    message = "",
+    type = ""
+) {
 
     element.textContent = message;
 
-    element.className =
-        "form-message " + type;
+    element.classList.remove(
+        "error",
+        "success"
+    );
 
-}
+    if (type) {
 
-
-function clearMessages() {
-
-    if (loginMessage) {
-
-        loginMessage.textContent = "";
-
-        loginMessage.className = "form-message";
-
-    }
-
-    if (registerMessage) {
-
-        registerMessage.textContent = "";
-
-        registerMessage.className = "form-message";
+        element.classList.add(type);
 
     }
 
@@ -168,850 +175,762 @@ function clearMessages() {
    AUTH MODAL
 ===================================================== */
 
-function openLoginModal() {
-
-    clearMessages();
+function openAuthModal(mode = "login") {
 
     authModal.classList.add("show");
 
-    authCard.classList.remove("slide");
+    authModal.classList.toggle(
+        "slide",
+        mode === "register"
+    );
 
-}
+    authModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
 
-
-function openRegisterModal() {
-
-    clearMessages();
-
-    authModal.classList.add("show");
-
-    authCard.classList.add("slide");
+    setMessage(loginMessage);
+    setMessage(registerMessage);
 
 }
 
 
 function closeAuthModal() {
 
-    authModal.classList.remove("show");
+    /*
+       IMPORTANT:
+       Agar user logged-in nahi hai,
+       modal close nahi hoga.
 
-    authCard.classList.remove("slide");
+       Isse website bypass nahi hogi.
+    */
 
-    clearMessages();
+    const user = getSession();
+
+    if (!user) {
+
+        authModal.classList.add("show");
+
+        return;
+
+    }
+
+    authModal.classList.remove(
+        "show",
+        "slide"
+    );
+
+    authModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    loginForm.reset();
+    registerForm.reset();
+
+    setMessage(loginMessage);
+    setMessage(registerMessage);
 
 }
 
 
 /* =====================================================
-   LOGIN BUTTONS
+   DROPDOWN
 ===================================================== */
 
-if (loginBtnModal) {
+function closeDropdown() {
 
-    loginBtnModal.addEventListener(
-        "click",
-        openLoginModal
-    );
+    dropdown.classList.remove("show");
 
-}
-
-
-if (heroLoginBtn) {
-
-    heroLoginBtn.addEventListener(
-        "click",
-        openLoginModal
+    avatarCircle.setAttribute(
+        "aria-expanded",
+        "false"
     );
 
 }
 
 
 /* =====================================================
-   CLOSE AUTH
+   AUTH STATE
 ===================================================== */
 
-if (closeBtnModal) {
+function renderAuthState() {
 
-    closeBtnModal.addEventListener(
-        "click",
-        closeAuthModal
+    const user = getSession();
+
+
+    /* =========================================
+       USER NOT LOGGED IN
+    ========================================= */
+
+    if (!user) {
+
+        document.body.classList.remove(
+            "logged-in"
+        );
+
+        loginBtnModal.style.display =
+            "inline-block";
+
+        portfolioBox.classList.remove(
+            "show"
+        );
+
+        closeDropdown();
+
+
+        /*
+           Login screen show karo
+        */
+
+        authModal.classList.add("show");
+
+        authModal.classList.remove("slide");
+
+        authModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        return;
+
+    }
+
+
+    /* =========================================
+       USER LOGGED IN
+    ========================================= */
+
+    document.body.classList.add(
+        "logged-in"
+    );
+
+    loginBtnModal.style.display =
+        "none";
+
+    portfolioBox.classList.add(
+        "show"
+    );
+
+
+    const initial =
+        (
+            user.name ||
+            user.email ||
+            "U"
+        )
+        .trim()
+        .charAt(0)
+        .toUpperCase();
+
+
+    avatarCircle.textContent =
+        initial;
+
+    dropdownName.textContent =
+        user.name;
+
+    dropdownEmail.textContent =
+        user.email;
+
+
+    accountAvatar.textContent =
+        initial;
+
+    accountName.textContent =
+        user.name;
+
+    accountEmail.textContent =
+        user.email;
+
+
+    /*
+       Login successful hone ke baad
+       authentication modal close.
+    */
+
+    authModal.classList.remove(
+        "show",
+        "slide"
+    );
+
+    authModal.setAttribute(
+        "aria-hidden",
+        "true"
     );
 
 }
 
 
 /* =====================================================
-   SWITCH LOGIN / REGISTER
+   LOGIN BUTTON
 ===================================================== */
 
-if (registerLink) {
+loginBtnModal.addEventListener(
+    "click",
+    () => {
 
-    registerLink.addEventListener(
-        "click",
-        function (event) {
+        openAuthModal("login");
 
-            event.preventDefault();
+    }
+);
 
-            openRegisterModal();
+
+openLoginBtn.addEventListener(
+    "click",
+    () => {
+
+        openAuthModal("login");
+
+    }
+);
+
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+closeBtnModal.addEventListener(
+    "click",
+    () => {
+
+        /*
+           Logged-out user modal close
+           nahi kar sakta.
+        */
+
+        if (!getSession()) {
+
+            setMessage(
+                loginMessage,
+                "Please login to explore the website.",
+                "error"
+            );
+
+            return;
 
         }
-    );
 
-}
+        closeAuthModal();
+
+    }
+);
 
 
-if (loginLink) {
+/* =====================================================
+   REGISTER → LOGIN
+===================================================== */
 
-    loginLink.addEventListener(
-        "click",
-        function (event) {
+registerLink.addEventListener(
+    "click",
+    (event) => {
 
-            event.preventDefault();
+        event.preventDefault();
 
-            openLoginModal();
+        authModal.classList.add(
+            "slide"
+        );
 
-        }
-    );
+        setMessage(loginMessage);
+        setMessage(registerMessage);
 
-}
+    }
+);
+
+
+/* =====================================================
+   LOGIN → REGISTER
+===================================================== */
+
+loginLink.addEventListener(
+    "click",
+    (event) => {
+
+        event.preventDefault();
+
+        authModal.classList.remove(
+            "slide"
+        );
+
+        setMessage(loginMessage);
+        setMessage(registerMessage);
+
+    }
+);
 
 
 /* =====================================================
    REGISTER
 ===================================================== */
 
-if (registerForm) {
+registerForm.addEventListener(
+    "submit",
+    (event) => {
 
-    registerForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-            const formData =
-                new FormData(registerForm);
-
-            const name =
-                formData.get("name").trim();
-
-            const email =
-                formData.get("email")
-                    .trim()
-                    .toLowerCase();
-
-            const password =
-                formData.get("password");
+        event.preventDefault();
 
 
-            /* Validation */
-
-            if (name.length < 2) {
-
-                showMessage(
-                    registerMessage,
-                    "Please enter a valid name.",
-                    "error"
-                );
-
-                return;
-
-            }
+        const formData =
+            new FormData(registerForm);
 
 
-            if (password.length < 6) {
-
-                showMessage(
-                    registerMessage,
-                    "Password must be at least 6 characters.",
-                    "error"
-                );
-
-                return;
-
-            }
+        const name =
+            formData
+                .get("name")
+                .trim();
 
 
-            const users = getUsers();
+        const email =
+            formData
+                .get("email")
+                .trim()
+                .toLowerCase();
 
 
-            /* Duplicate email */
-
-            const existingUser =
-                users.find(
-                    user =>
-                        user.email === email
-                );
+        const password =
+            formData.get("password");
 
 
-            if (existingUser) {
+        /* NAME */
 
-                showMessage(
-                    registerMessage,
-                    "This email is already registered.",
-                    "error"
-                );
+        if (name.length < 2) {
 
-                return;
-
-            }
-
-
-            /* Create user */
-
-            const newUser = {
-
-                id: Date.now(),
-
-                name: name,
-
-                email: email,
-
-                password: password
-
-            };
-
-
-            users.push(newUser);
-
-            saveUsers(users);
-
-
-            showMessage(
+            setMessage(
                 registerMessage,
-                "Account created successfully!",
+                "Name must be at least 2 characters.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* EMAIL */
+
+        if (
+            !registerForm.elements.email
+                .checkValidity()
+        ) {
+
+            setMessage(
+                registerMessage,
+                "Please enter a valid email address.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* PASSWORD */
+
+        if (password.length < 6) {
+
+            setMessage(
+                registerMessage,
+                "Password must be at least 6 characters.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* EXISTING USER */
+
+        const users = getUsers();
+
+
+        const exists =
+            users.some(
+                user =>
+                    user.email === email
+            );
+
+
+        if (exists) {
+
+            setMessage(
+                registerMessage,
+                "An account with this email already exists.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        /* SAVE USER */
+
+        users.push({
+            name,
+            email,
+            password
+        });
+
+
+        saveUsers(users);
+
+
+        setMessage(
+            registerMessage,
+            "Registration successful!",
+            "success"
+        );
+
+
+        /*
+           Register ke baad automatically
+           login screen par.
+        */
+
+        setTimeout(() => {
+
+            authModal.classList.remove(
+                "slide"
+            );
+
+            loginForm.elements.email.value =
+                email;
+
+            loginForm.elements.password.focus();
+
+
+            setMessage(
+                registerMessage
+            );
+
+
+            setMessage(
+                loginMessage,
+                "Account created. Please login.",
                 "success"
             );
 
+        }, 700);
 
-            /* Clear form */
-
-            registerForm.reset();
-
-
-            /* Open login after short delay */
-
-            setTimeout(
-                function () {
-
-                    openLoginModal();
-
-                },
-                1000
-            );
-
-        }
-    );
-
-}
+    }
+);
 
 
 /* =====================================================
    LOGIN
 ===================================================== */
 
-if (loginForm) {
+loginForm.addEventListener(
+    "submit",
+    (event) => {
 
-    loginForm.addEventListener(
-        "submit",
-        function (event) {
-
-            event.preventDefault();
-
-            const formData =
-                new FormData(loginForm);
-
-            const email =
-                formData.get("email")
-                    .trim()
-                    .toLowerCase();
-
-            const password =
-                formData.get("password");
+        event.preventDefault();
 
 
-            const users = getUsers();
+        const formData =
+            new FormData(loginForm);
 
 
-            const user =
-                users.find(
-                    item =>
-                        item.email === email &&
-                        item.password === password
-                );
+        const email =
+            formData
+                .get("email")
+                .trim()
+                .toLowerCase();
 
 
-            if (!user) {
-
-                showMessage(
-                    loginMessage,
-                    "Invalid email or password.",
-                    "error"
-                );
-
-                return;
-
-            }
+        const password =
+            formData.get("password");
 
 
-            /* Save session */
-
-            saveCurrentUser({
-
-                id: user.id,
-
-                name: user.name,
-
-                email: user.email
-
-            });
+        const users =
+            getUsers();
 
 
-            showMessage(
+        const user =
+            users.find(
+                item =>
+                    item.email === email &&
+                    item.password === password
+            );
+
+
+        /* INVALID LOGIN */
+
+        if (!user) {
+
+            setMessage(
                 loginMessage,
-                "Login successful!",
-                "success"
+                "Invalid email or password.",
+                "error"
             );
 
-
-            loginForm.reset();
-
-
-            setTimeout(
-                function () {
-
-                    closeAuthModal();
-
-                    renderAuthState();
-
-                },
-                500
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   RENDER AUTH STATE
-===================================================== */
-
-function renderAuthState() {
-
-    const user = getCurrentUser();
-
-
-    if (user) {
-
-        /* Logged in */
-
-        loginBtnModal.style.display = "none";
-
-        portfolioBox.style.display = "block";
-
-
-        const initial =
-            getInitial(user.name);
-
-
-        avatarBtn.textContent = initial;
-
-
-        const dropdownAvatar =
-            document.querySelector(".dropdown-avatar");
-
-        const dropdownName =
-            document.querySelector("#dropdownName");
-
-        const dropdownEmail =
-            document.querySelector("#dropdownEmail");
-
-
-        if (dropdownAvatar) {
-
-            dropdownAvatar.textContent =
-                initial;
+            return;
 
         }
 
 
-        if (dropdownName) {
+        /* SAVE LOGIN SESSION */
 
-            dropdownName.textContent =
-                user.name;
-
-        }
+        saveSession(user);
 
 
-        if (dropdownEmail) {
+        /* UPDATE UI */
 
-            dropdownEmail.textContent =
-                user.email;
-
-        }
+        renderAuthState();
 
 
-        /* Account */
-
-        const accountAvatar =
-            document.querySelector("#accountAvatar");
-
-        const accountName =
-            document.querySelector("#accountName");
-
-        const accountEmail =
-            document.querySelector("#accountEmail");
-
-        const accountNameInfo =
-            document.querySelector("#accountNameInfo");
-
-        const accountEmailInfo =
-            document.querySelector("#accountEmailInfo");
-
-
-        if (accountAvatar) {
-
-            accountAvatar.textContent =
-                initial;
-
-        }
-
-
-        if (accountName) {
-
-            accountName.textContent =
-                user.name;
-
-        }
-
-
-        if (accountEmail) {
-
-            accountEmail.textContent =
-                user.email;
-
-        }
-
-
-        if (accountNameInfo) {
-
-            accountNameInfo.textContent =
-                user.name;
-
-        }
-
-
-        if (accountEmailInfo) {
-
-            accountEmailInfo.textContent =
-                user.email;
-
-        }
-
-    } else {
-
-        /* Logged out */
-
-        loginBtnModal.style.display =
-            "block";
-
-        portfolioBox.style.display =
-            "none";
+        /*
+           Main website automatically unlock.
+        */
 
     }
-
-}
+);
 
 
 /* =====================================================
    PROFILE DROPDOWN
 ===================================================== */
 
-if (avatarBtn) {
-
-    avatarBtn.addEventListener(
-        "click",
-        function (event) {
-
-            event.stopPropagation();
-
-            profileDropdown.classList.toggle("show");
-
-        }
-    );
-
-}
-
-
-/* Close dropdown when clicking outside */
-
-document.addEventListener(
+avatarCircle.addEventListener(
     "click",
-    function () {
+    (event) => {
 
-        if (profileDropdown) {
+        event.stopPropagation();
 
-            profileDropdown.classList.remove("show");
 
-        }
+        const isOpen =
+            dropdown.classList.toggle(
+                "show"
+            );
+
+
+        avatarCircle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
 
     }
 );
-
-
-/* Prevent dropdown closing */
-
-if (profileDropdown) {
-
-    profileDropdown.addEventListener(
-        "click",
-        function (event) {
-
-            event.stopPropagation();
-
-        }
-    );
-
-}
 
 
 /* =====================================================
    MY ACCOUNT
 ===================================================== */
 
-if (accountBtn) {
+accountBtn.addEventListener(
+    "click",
+    () => {
 
-    accountBtn.addEventListener(
-        "click",
-        function (event) {
+        closeDropdown();
 
-            event.preventDefault();
 
-            profileDropdown.classList.remove(
-                "show"
-            );
+        accountModal.classList.add(
+            "show"
+        );
 
-            accountModal.classList.add(
-                "show"
-            );
+        accountModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
-        }
-    );
-
-}
+    }
+);
 
 
 /* =====================================================
    CLOSE ACCOUNT
 ===================================================== */
 
-if (accountClose) {
+closeAccountBtn.addEventListener(
+    "click",
+    () => {
 
-    accountClose.addEventListener(
-        "click",
-        function () {
+        accountModal.classList.remove(
+            "show"
+        );
 
-            accountModal.classList.remove(
-                "show"
-            );
+        accountModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
 
-        }
-    );
-
-}
+    }
+);
 
 
 /* =====================================================
    LOGOUT
 ===================================================== */
 
-function logout() {
+logoutBtn.addEventListener(
+    "click",
+    () => {
 
-    removeCurrentUser();
+        clearSession();
 
-    profileDropdown.classList.remove(
-        "show"
-    );
-
-    accountModal.classList.remove(
-        "show"
-    );
-
-    renderAuthState();
-
-}
+        closeDropdown();
 
 
-if (logoutBtn) {
-
-    logoutBtn.addEventListener(
-        "click",
-        function (event) {
-
-            event.preventDefault();
-
-            logout();
-
-        }
-    );
-
-}
-
-
-if (accountLogout) {
-
-    accountLogout.addEventListener(
-        "click",
-        logout
-    );
-
-}
-
-
-/* =====================================================
-   PASSWORD SHOW / HIDE
-===================================================== */
-
-const passwordToggles =
-    document.querySelectorAll(
-        ".password-toggle"
-    );
-
-
-passwordToggles.forEach(
-    function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                const targetId =
-                    button.dataset.target;
-
-                const input =
-                    document.getElementById(
-                        targetId
-                    );
-
-                const icon =
-                    button.querySelector("i");
-
-
-                if (input.type === "password") {
-
-                    input.type = "text";
-
-                    icon.className =
-                        "bxf bx-hide";
-
-                } else {
-
-                    input.type = "password";
-
-                    icon.className =
-                        "bxf bx-show";
-
-                }
-
-            }
+        accountModal.classList.remove(
+            "show"
         );
+
+
+        accountModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        /*
+           Website immediately lock.
+        */
+
+        renderAuthState();
+
+
+        /*
+           Login screen par login form.
+        */
+
+        setTimeout(() => {
+
+            openAuthModal("login");
+
+        }, 100);
 
     }
 );
 
 
 /* =====================================================
-   DARK / LIGHT MODE
+   CLICK OUTSIDE
 ===================================================== */
 
-function updateThemeIcon() {
+document.addEventListener(
+    "click",
+    (event) => {
 
-    const icon =
-        themeBtn.querySelector("i");
+
+        /* PROFILE DROPDOWN */
+
+        if (
+            !portfolioBox.contains(
+                event.target
+            )
+        ) {
+
+            closeDropdown();
+
+        }
 
 
-    if (document.body.classList.contains(
-        "light-mode"
-    )) {
+        /* ACCOUNT MODAL */
 
-        icon.className =
-            "bxf bx-sun";
+        if (
+            event.target === accountModal
+        ) {
 
-    } else {
+            accountModal.classList.remove(
+                "show"
+            );
 
-        icon.className =
-            "bxf bx-moon";
+            accountModal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+        }
+
+
+        /*
+           Auth modal:
+           Logged-out user click outside
+           se bhi close nahi kar sakta.
+        */
+
+        if (
+            event.target === authModal &&
+            getSession()
+        ) {
+
+            closeAuthModal();
+
+        }
 
     }
-
-}
-
-
-function applySavedTheme() {
-
-    const savedTheme =
-        localStorage.getItem(
-            THEME_KEY
-        );
-
-
-    if (savedTheme === "light") {
-
-        document.body.classList.add(
-            "light-mode"
-        );
-
-    } else {
-
-        document.body.classList.remove(
-            "light-mode"
-        );
-
-    }
-
-
-    updateThemeIcon();
-
-}
-
-
-if (themeBtn) {
-
-    themeBtn.addEventListener(
-        "click",
-        function () {
-
-            document.body.classList.toggle(
-                "light-mode"
-            );
-
-
-            const isLight =
-                document.body.classList.contains(
-                    "light-mode"
-                );
-
-
-            localStorage.setItem(
-                THEME_KEY,
-                isLight ? "light" : "dark"
-            );
-
-
-            updateThemeIcon();
-
-        }
-    );
-
-}
+);
 
 
 /* =====================================================
-   EXPLORE BUTTON
-===================================================== */
-
-if (exploreBtn) {
-
-    exploreBtn.addEventListener(
-        "click",
-        function () {
-
-            document
-                .querySelector("#collection")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   CONTACT BUTTON
-===================================================== */
-
-if (contactBtn) {
-
-    contactBtn.addEventListener(
-        "click",
-        function () {
-
-            alert(
-                "Contact section is ready. You can add your email or WhatsApp here."
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   CLOSE MODALS WITH ESC
+   ESC KEY
 ===================================================== */
 
 document.addEventListener(
     "keydown",
-    function (event) {
+    (event) => {
 
-        if (event.key === "Escape") {
+        if (event.key !== "Escape") {
+            return;
+        }
 
-            closeAuthModal();
 
-            accountModal.classList.remove(
-                "show"
-            );
+        /*
+           Logged-out user Escape se
+           login screen bypass nahi karega.
+        */
 
-            profileDropdown.classList.remove(
-                "show"
-            );
+        if (getSession()) {
+
+            if (
+                accountModal.classList.contains(
+                    "show"
+                )
+            ) {
+
+                accountModal.classList.remove(
+                    "show"
+                );
+
+                accountModal.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+            }
+            else if (
+                authModal.classList.contains(
+                    "show"
+                )
+            ) {
+
+                closeAuthModal();
+
+            }
 
         }
+
+
+        closeDropdown();
 
     }
 );
 
 
 /* =====================================================
-   CLOSE MODAL BY CLICKING OUTSIDE
+   START WEBSITE
 ===================================================== */
-
-authModal.addEventListener(
-    "click",
-    function (event) {
-
-        if (event.target === authModal) {
-
-            closeAuthModal();
-
-        }
-
-    }
-);
-
-
-accountModal.addEventListener(
-    "click",
-    function (event) {
-
-        if (event.target === accountModal) {
-
-            accountModal.classList.remove(
-                "show"
-            );
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   INITIALIZE
-===================================================== */
-
-applySavedTheme();
 
 renderAuthState();
+// =========================
+// PAGE LOADER
+// =========================
+
+window.addEventListener("load", () => {
+    const pageLoader = document.getElementById("pageLoader");
+
+    setTimeout(() => {
+        pageLoader.classList.add("hide");
+    }, 1200);
+});
