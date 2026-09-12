@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Full Stack Website</title>
+
+    <link rel="stylesheet" href="webiste.css">
+
+    <!-- Boxicons -->
+    <link
+        href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <a href="#" class="logo">Logo</a>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Collection</a>
+        </nav>
+
+        <div class="user-auth">
+
+            <!-- Login Button -->
+            <button type="button" class="login-btn-modal">
+                Login
+            </button>
+
+            <!-- Profile -->
+            <div class="portfolio-box">
+
+                <button
+                    type="button"
+                    class="avatar-circle"
+                    aria-label="Open profile menu"
+                    aria-expanded="false">
+                    U
+                </button>
+
+                <!-- Profile Dropdown -->
+                <div class="dropdown">
+
+                    <div class="dropdown-user">
+                        <strong class="dropdown-name">
+                            User
+                        </strong>
+
+                        <span class="dropdown-email">
+                            user@example.com
+                        </span>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="dropdown-item account-btn">
+                        My account
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-item logout-btn">
+                        Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+        <section>
+
+            <h1>Welcome user!</h1>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= AUTH MODAL ================= -->
+
+    <div
+        class="auth-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        aria-labelledby="auth-title">
+
+        <!-- Close -->
+        <button
+            type="button"
+            class="close-btn-modal"
+            aria-label="Close authentication modal">
+
+            <i class="bxf bx-x"></i>
+
+        </button>
+
+
+        <!-- ================= LOGIN ================= -->
+
+        <div class="form-box login">
+
+            <h2 id="auth-title">
+                Login
+            </h2>
+
+            <form
+                class="login-form"
+                novalidate>
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        autocomplete="email"
+                        required>
+
+                    <i class="bxf bx-envelope"></i>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        required
+                        minlength="6">
+
+                    <i class="bxf bx-lock"></i>
+
+                </div>
+
+
+                <p
+                    class="form-message login-message"
+                    aria-live="polite">
+                </p>
+
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    Login
+
+                </button>
+
+
+                <p>
+
+                    Don't have an account?
+
+                    <a
+                        href="#"
+                        class="register-link">
+
+                        Register
+
+                    </a>
+
+                </p>
+
+            </form>
+
+        </div>
+
+
+        <!-- ================= REGISTER ================= -->
+
+        <div class="form-box register">
+
+            <h2>
+                Register
+            </h2>
+
+            <form
+                class="register-form"
+                novalidate>
+
+                <div class="input-box">
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        autocomplete="name"
+                        required
+                        minlength="2">
+
+                    <i class="bxf bx-user"></i>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        autocomplete="email"
+                        required>
+
+                    <i class="bxf bx-envelope"></i>
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        autocomplete="new-password"
+                        required
+                        minlength="6">
+
+                    <i class="bxf bx-lock"></i>
+
+                </div>
+
+
+                <p
+                    class="form-message register-message"
+                    aria-live="polite">
+                </p>
+
+
+                <button
+                    type="submit"
+                    class="btn">
+
+                    Register
+
+                </button>
+
+
+                <p>
+
+                    Already have an account?
+
+                    <a
+                        href="#"
+                        class="login-link">
+
+                        Login
+
+                    </a>
+
+                </p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= ACCOUNT MODAL ================= -->
+
+    <div
+        class="account-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden="true"
+        aria-labelledby="account-title">
+
+        <div class="account-card">
+
+            <button
+                type="button"
+                class="close-account-btn"
+                aria-label="Close account details">
+
+                <i class="bxf bx-x"></i>
+
+            </button>
+
+
+            <h2 id="account-title">
+                My account
+            </h2>
+
+
+            <div class="account-avatar">
+                U
+            </div>
+
+
+            <p>
+                <strong>Name:</strong>
+
+                <span class="account-name">
+                    User
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Email:</strong>
+
+                <span class="account-email">
+                    user@example.com
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="webiste.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,717 @@
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+
+/* ================= HEADER ================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 15px 100px;
+
+    display: flex;
+    align-items: center;
+
+    z-index: 100;
+}
+
+
+/* ================= LOGO ================= */
+
+.logo {
+    font-size: 30px;
+
+    color: #fff;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    margin-right: auto;
+}
+
+
+/* ================= NAVIGATION ================= */
+
+nav a {
+    color: #fff;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    margin-left: 40px;
+}
+
+
+/* ================= USER AUTH ================= */
+
+.user-auth {
+    position: relative;
+
+    margin-left: 40px;
+}
+
+
+/* ================= LOGIN BUTTON ================= */
+
+.login-btn-modal {
+    height: 40px;
+
+    padding: 0 35px;
+
+    background: transparent;
+
+    border: 2px solid #fff;
+
+    border-radius: 40px;
+
+    font-size: 16px;
+
+    color: #fff;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.login-btn-modal:hover {
+    background: #fff;
+
+    color: #000;
+}
+
+
+/* ================= PROFILE ================= */
+
+.portfolio-box {
+    position: relative;
+
+    display: none;
+}
+
+.portfolio-box.show {
+    display: block;
+}
+
+
+/* ================= AVATAR ================= */
+
+.avatar-circle,
+.account-avatar {
+    width: 40px;
+    height: 40px;
+
+    background: #fff;
+
+    border: none;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 22px;
+
+    color: #222;
+
+    font-weight: 700;
+}
+
+.avatar-circle {
+    cursor: pointer;
+}
+
+
+/* ================= BACKGROUND ================= */
+
+section {
+    min-height: 100vh;
+
+    background-image: url("./bg.jpg");
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    background-position: center;
+
+    padding: 0 100px;
+
+    position: relative;
+}
+
+
+/* ================= WELCOME ================= */
+
+section h1 {
+    position: absolute;
+
+    bottom: 40px;
+
+    font-size: 25px;
+
+    color: #fff;
+
+    font-weight: 600;
+}
+
+
+/* ================= MODALS ================= */
+
+.auth-modal,
+.account-modal {
+    position: fixed;
+
+    inset: 0;
+
+    margin: auto;
+
+    z-index: 200;
+
+    color: #fff;
+
+    transform: scale(0);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+
+/* ================= SHOW MODAL ================= */
+
+.auth-modal.show,
+.account-modal.show {
+    transform: scale(1);
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* ================= AUTH MODAL ================= */
+
+.auth-modal {
+    width: 420px;
+
+    height: 440px;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    border: 2px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.3);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+/* ================= REGISTER HEIGHT ================= */
+
+.auth-modal.slide {
+    height: 540px;
+}
+
+
+/* ================= FORM BOX ================= */
+
+.auth-modal .form-box {
+    width: 100%;
+
+    padding: 40px;
+}
+
+
+/* ================= LOGIN FORM ================= */
+
+.auth-modal .form-box.login {
+    transform: translateX(0);
+
+    transition:
+        transform 0.18s ease;
+}
+
+
+/* ================= LOGIN SLIDE LEFT ================= */
+
+.auth-modal.slide .form-box.login {
+    transform: translateX(-420px);
+
+    transition: none;
+}
+
+
+/* ================= REGISTER FORM ================= */
+
+.auth-modal .form-box.register {
+    position: absolute;
+
+    transform: translateX(420px);
+
+    transition:
+        transform 0.18s ease;
+}
+
+
+/* ================= REGISTER SLIDE ================= */
+
+.auth-modal.slide .form-box.register {
+    transform: translateX(0);
+}
+
+
+/* ================= HEADING ================= */
+
+.form-box h2 {
+    font-size: 35px;
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
+
+
+/* ================= INPUT BOX ================= */
+
+.input-box {
+    position: relative;
+
+    width: 100%;
+
+    height: 50px;
+
+    margin: 24px 0;
+}
+
+
+/* ================= INPUT ================= */
+
+.input-box input {
+    width: 100%;
+
+    height: 100%;
+
+    background: transparent;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    outline: none;
+
+    border-radius: 40px;
+
+    font-size: 16px;
+
+    color: #fff;
+
+    padding: 0 45px 0 20px;
+}
+
+
+/* ================= INPUT FOCUS ================= */
+
+.input-box input:focus {
+    border-color:
+        rgba(255, 255, 255, 0.85);
+}
+
+
+/* ================= PLACEHOLDER ================= */
+
+.input-box input::placeholder {
+    color:
+        rgba(255, 255, 255, 0.9);
+}
+
+
+/* ================= INPUT ICON ================= */
+
+.input-box i {
+    position: absolute;
+
+    right: 20px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    font-size: 20px;
+}
+
+
+/* ================= BUTTON ================= */
+
+.btn {
+    width: 100%;
+
+    height: 45px;
+
+    background: #fff;
+
+    border-radius: 40px;
+
+    border: none;
+
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.1);
+
+    font-size: 16px;
+
+    color: #222;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #ddd;
+}
+
+
+/* ================= FORM TEXT ================= */
+
+.form-box > form > p:not(.form-message) {
+    font-size: 14.5px;
+
+    text-align: center;
+
+    margin: 25px 0 10px;
+}
+
+
+/* ================= FORM LINKS ================= */
+
+.form-box p a {
+    color: #fff;
+
+    text-decoration: none;
+
+    font-weight: 600;
+}
+
+.form-box p a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================= MESSAGE ================= */
+
+.form-message {
+    min-height: 18px;
+
+    margin: -8px 0 14px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.form-message.error {
+    color: #ffd4dc;
+}
+
+.form-message.success {
+    color: #d8ffd9;
+}
+
+
+/* ================= CLOSE BUTTON ================= */
+
+.close-btn-modal,
+.close-account-btn {
+    position: absolute;
+
+    top: 0;
+
+    right: 0;
+
+    width: 40px;
+
+    height: 40px;
+
+    background: #fff;
+
+    border: none;
+
+    border-bottom-left-radius: 15px;
+
+    font-size: 25px;
+
+    color: #222;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+/* ================= DROPDOWN ================= */
+
+.dropdown {
+    position: absolute;
+
+    top: 50px;
+
+    right: 0;
+
+    width: 220px;
+
+    padding: 10px;
+
+    background: #fff;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.22);
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+/* ================= SHOW DROPDOWN ================= */
+
+.dropdown.show {
+    display: flex;
+}
+
+
+/* ================= DROPDOWN USER ================= */
+
+.dropdown-user {
+    padding: 8px 10px 10px;
+
+    border-bottom:
+        1px solid #e5e5e5;
+
+    margin-bottom: 4px;
+
+    color: #222;
+}
+
+.dropdown-name,
+.dropdown-email {
+    display: block;
+
+    overflow-wrap: anywhere;
+}
+
+.dropdown-email {
+    margin-top: 3px;
+
+    font-size: 12px;
+
+    color: #666;
+}
+
+
+/* ================= DROPDOWN BUTTON ================= */
+
+.dropdown-item {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 9px 12px;
+
+    color: #222;
+
+    text-align: left;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background: #5e5d5d;
+
+    color: #fff;
+}
+
+
+/* ================= ACCOUNT MODAL ================= */
+
+.account-modal {
+    width: min(
+        380px,
+        calc(100% - 30px)
+    );
+
+    height: max-content;
+}
+
+
+/* ================= ACCOUNT CARD ================= */
+
+.account-card {
+    position: relative;
+
+    width: 100%;
+
+    padding:
+        45px 35px 35px;
+
+    background:
+        rgba(0, 0, 0, 0.55);
+
+    border:
+        2px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.3);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    text-align: center;
+}
+
+
+/* ================= ACCOUNT TITLE ================= */
+
+.account-card h2 {
+    margin-bottom: 20px;
+}
+
+
+/* ================= ACCOUNT AVATAR ================= */
+
+.account-avatar {
+    width: 72px;
+
+    height: 72px;
+
+    margin:
+        0 auto 22px;
+
+    font-size: 32px;
+}
+
+
+/* ================= ACCOUNT TEXT ================= */
+
+.account-card p {
+    margin: 10px 0;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 15px 30px;
+    }
+
+    section {
+        padding: 0 30px;
+    }
+
+    nav a {
+        margin-left: 20px;
+    }
+
+    .user-auth {
+        margin-left: 20px;
+    }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .auth-modal {
+        width: calc(100% - 30px);
+
+        max-width: 420px;
+
+        max-height:
+            calc(100vh - 30px);
+
+        overflow-y: auto;
+    }
+
+    .auth-modal.slide {
+        height:
+            min(
+                540px,
+                calc(100vh - 30px)
+            );
+    }
+
+    .auth-modal .form-box {
+        padding: 30px;
+    }
+
+    section {
+        padding: 0 20px;
+    }
+
+    section h1 {
+        bottom: 25px;
+    }
+
+}
