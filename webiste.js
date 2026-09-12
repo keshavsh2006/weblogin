@@ -934,3 +934,26 @@ window.addEventListener("load", () => {
         pageLoader.classList.add("hide");
     }, 1200);
 });
+
+// =====================================================
+// PROFILE DASHBOARD - ESC CLOSE
+// =====================================================
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key !== "Escape") {
+        return;
+    }
+
+    if (accountModal.classList.contains("show")) {
+
+        accountModal.classList.remove("show");
+
+        accountModal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+});

@@ -7,16 +7,17 @@
 
     <title>MyWebsite</title>
 
-    <link rel="stylesheet" href="webiste.css">
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-    <link
-        href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css"
-        rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="webiste.css">
 </head>
 
 <body>
 
-    <!-- Loading Screen -->
+    <!-- ================= PAGE LOADER ================= -->
+
     <div class="page-loader" id="pageLoader">
         <div class="loader-content">
             <div class="loader-spinner"></div>
@@ -25,58 +26,80 @@
         </div>
     </div>
 
+
     <!-- ================= HEADER ================= -->
-    <header>
 
-        <a href="#" class="logo">MyWebsite</a>
+    <header class="header">
 
-        <!-- Navigation -->
-        <nav class="main-nav">
+        <a href="#" class="logo">
+            <span>My</span>Website
+        </a>
+
+        <nav class="navbar">
+
             <a href="#home">Home</a>
             <a href="#about">About</a>
-            <a href="#contact">Contact</a>
             <a href="#collection">Collection</a>
+            <a href="#contact">Contact</a>
+
         </nav>
 
-        <!-- Login / Profile -->
+
+        <!-- Login Button -->
+
         <div class="user-auth">
 
             <button type="button" class="login-btn-modal">
                 Login
             </button>
 
+
+            <!-- Profile -->
+
             <div class="portfolio-box">
 
-                <button
-                    type="button"
-                    class="avatar-circle"
-                    aria-label="Open profile menu"
-                    aria-expanded="false">
+                <div class="avatar-circle">
                     U
-                </button>
+                </div>
 
                 <div class="dropdown">
 
                     <div class="dropdown-user">
-                        <strong class="dropdown-name">User</strong>
-                        <span class="dropdown-email">
-                            user@example.com
-                        </span>
+
+                        <div class="dropdown-avatar">
+                            U
+                        </div>
+
+                        <div class="dropdown-info">
+
+                            <strong class="dropdown-name">
+                                User
+                            </strong>
+
+                            <span class="dropdown-email">
+                                user@email.com
+                            </span>
+
+                        </div>
+
                     </div>
 
-                    <button
-                        type="button"
-                        class="dropdown-item account-btn">
-                        My Account
-                    </button>
 
-                    <button
-                        type="button"
-                        class="dropdown-item logout-btn">
+                    <div class="dropdown-divider"></div>
+
+
+                    <a href="#" class="account-btn">
+                        <i class="bx bx-user"></i>
+                        My Account
+                    </a>
+
+                    <a href="#" class="logout-btn">
+                        <i class="bx bx-log-out"></i>
                         Logout
-                    </button>
+                    </a>
 
                 </div>
+
             </div>
 
         </div>
@@ -84,57 +107,142 @@
     </header>
 
 
+
     <!-- ================= LOGIN SCREEN ================= -->
 
-    <div class="login-screen">
+    <section class="login-screen">
 
         <div class="login-screen-content">
 
-            <h1>Welcome to <span>MyWebsite</span></h1>
+            <span class="login-badge">
+                <i class="bx bx-lock"></i>
+                Members Only
+            </span>
+
+            <h1>
+                Welcome to
+                <span>MyWebsite</span>
+            </h1>
 
             <p>
-                Please login or create an account to explore the website.
+                Please login or create an account to explore
+                the website.
             </p>
 
             <button type="button" class="open-login-btn">
+                <i class="bx bx-log-in"></i>
                 Login to Explore
             </button>
 
         </div>
 
-    </div>
+    </section>
 
 
-    <!-- ================= MAIN WEBSITE ================= -->
+
+    <!-- ================= PROTECTED WEBSITE ================= -->
 
     <main class="protected-content">
 
-        <!-- HOME -->
-        <section id="home" class="hero-section">
+
+        <!-- ================= HOME ================= -->
+
+        <section class="hero" id="home">
 
             <div class="hero-content">
 
-                <p class="hero-small">
-                    Welcome to
-                </p>
+                <span class="hero-badge">
+                    Welcome Back
+                </span>
 
                 <h1>
-                    My<span>Website</span>
+                    Explore
+                    <span>Something Amazing</span>
                 </h1>
 
-                <p class="hero-description">
-                    Explore our website and discover something amazing.
+                <p>
+                    Discover our collection and explore
+                    everything MyWebsite has to offer.
                 </p>
 
-                <div class="hero-buttons">
+                <a href="#collection" class="hero-btn">
+                    Explore Collection
+                    <i class="bx bx-right-arrow-alt"></i>
+                </a>
 
-                    <a href="#collection" class="hero-btn">
-                        Explore Collection
-                    </a>
+            </div>
 
-                    <a href="#about" class="hero-btn secondary">
-                        Learn More
-                    </a>
+        </section>
+
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section class="section" id="about">
+
+            <div class="section-heading">
+
+                <span>About Us</span>
+
+                <h2>
+                    Built for
+                    <strong>Exploration</strong>
+                </h2>
+
+                <p>
+                    A simple and modern platform designed
+                    to provide a clean and enjoyable experience.
+                </p>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <div class="about-card">
+
+                    <div class="card-icon">
+                        <i class="bx bx-rocket"></i>
+                    </div>
+
+                    <h3>Fast Experience</h3>
+
+                    <p>
+                        Enjoy a smooth and fast browsing
+                        experience across the website.
+                    </p>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <div class="card-icon">
+                        <i class="bx bx-shield-check"></i>
+                    </div>
+
+                    <h3>Secure Access</h3>
+
+                    <p>
+                        Your account area is protected
+                        behind the login system.
+                    </p>
+
+                </div>
+
+
+                <div class="about-card">
+
+                    <div class="card-icon">
+                        <i class="bx bx-devices"></i>
+                    </div>
+
+                    <h3>Responsive</h3>
+
+                    <p>
+                        Designed to work nicely on desktop,
+                        tablet and mobile devices.
+                    </p>
 
                 </div>
 
@@ -143,108 +251,139 @@
         </section>
 
 
-        <!-- ABOUT -->
-        <section id="about" class="content-section">
 
-            <div class="section-title">
-                <p>About Us</p>
-                <h2>What We Offer</h2>
-            </div>
+        <!-- ================= COLLECTION ================= -->
 
-            <div class="feature-grid">
+        <section class="section collection-section" id="collection">
 
-                <div class="feature-card">
-                    <i class="bxf bx-user"></i>
+            <div class="section-heading">
 
-                    <h3>Personal Profile</h3>
+                <span>Collection</span>
 
-                    <p>
-                        Create your account and manage your profile
-                        easily.
-                    </p>
-                </div>
+                <h2>
+                    Explore Our
+                    <strong>Collection</strong>
+                </h2>
 
-
-                <div class="feature-card">
-                    <i class="bxf bx-star"></i>
-
-                    <h3>Explore</h3>
-
-                    <p>
-                        Explore different sections and discover
-                        interesting content.
-                    </p>
-                </div>
-
-
-                <div class="feature-card">
-                    <i class="bxf bx-lock"></i>
-
-                    <h3>Private Access</h3>
-
-                    <p>
-                        Only logged-in users can access the main
-                        website.
-                    </p>
-                </div>
+                <p>
+                    Check out some of the featured content
+                    available on our platform.
+                </p>
 
             </div>
 
-        </section>
-
-
-        <!-- COLLECTION -->
-        <section id="collection" class="content-section">
-
-            <div class="section-title">
-                <p>Our Collection</p>
-                <h2>Explore</h2>
-            </div>
 
             <div class="collection-grid">
 
+
                 <div class="collection-card">
-                    <div class="card-icon">
-                        <i class="bxf bx-image"></i>
+
+                    <div class="collection-icon">
+                        <i class="bx bx-code-alt"></i>
                     </div>
 
-                    <h3>Gallery</h3>
+                    <div class="collection-content">
 
-                    <p>
-                        Explore our beautiful collection.
-                    </p>
+                        <span>01</span>
 
-                    <a href="#">View Collection</a>
+                        <h3>Web Development</h3>
+
+                        <p>
+                            Learn and explore modern
+                            web development concepts.
+                        </p>
+
+                        <a href="#">
+                            Explore
+                            <i class="bx bx-right-arrow-alt"></i>
+                        </a>
+
+                    </div>
+
                 </div>
 
 
+
                 <div class="collection-card">
-                    <div class="card-icon">
-                        <i class="bxf bx-code"></i>
+
+                    <div class="collection-icon">
+                        <i class="bx bx-palette"></i>
                     </div>
 
-                    <h3>Projects</h3>
+                    <div class="collection-content">
 
-                    <p>
-                        Check out our latest projects and work.
-                    </p>
+                        <span>02</span>
 
-                    <a href="#">View Projects</a>
+                        <h3>Creative Design</h3>
+
+                        <p>
+                            Discover beautiful and modern
+                            design ideas.
+                        </p>
+
+                        <a href="#">
+                            Explore
+                            <i class="bx bx-right-arrow-alt"></i>
+                        </a>
+
+                    </div>
+
                 </div>
 
 
+
                 <div class="collection-card">
-                    <div class="card-icon">
-                        <i class="bxf bx-rocket"></i>
+
+                    <div class="collection-icon">
+                        <i class="bx bx-bulb"></i>
                     </div>
 
-                    <h3>More</h3>
+                    <div class="collection-content">
 
-                    <p>
-                        More exciting features are coming soon.
-                    </p>
+                        <span>03</span>
 
-                    <a href="#">Explore More</a>
+                        <h3>Ideas & Projects</h3>
+
+                        <p>
+                            Explore interesting projects
+                            and creative ideas.
+                        </p>
+
+                        <a href="#">
+                            Explore
+                            <i class="bx bx-right-arrow-alt"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="collection-card">
+
+                    <div class="collection-icon">
+                        <i class="bx bx-star"></i>
+                    </div>
+
+                    <div class="collection-content">
+
+                        <span>04</span>
+
+                        <h3>Premium Content</h3>
+
+                        <p>
+                            More exciting features are
+                            coming soon.
+                        </p>
+
+                        <a href="#">
+                            Explore
+                            <i class="bx bx-right-arrow-alt"></i>
+                        </a>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -252,228 +391,560 @@
         </section>
 
 
-        <!-- CONTACT -->
-        <section id="contact" class="content-section contact-section">
 
-            <div class="section-title">
-                <p>Get In Touch</p>
-                <h2>Contact Us</h2>
+        <!-- ================= CONTACT ================= -->
+
+        <section class="section contact-section" id="contact">
+
+            <div class="section-heading">
+
+                <span>Contact</span>
+
+                <h2>
+                    Get In
+                    <strong>Touch</strong>
+                </h2>
+
+                <p>
+                    Have a question or suggestion?
+                    Feel free to reach out.
+                </p>
+
             </div>
 
-            <p>
-                Thanks for exploring MyWebsite.
-            </p>
 
-            <button class="contact-btn">
-                Contact Us
-            </button>
+            <div class="contact-box">
+
+                <div class="contact-item">
+
+                    <i class="bx bx-envelope"></i>
+
+                    <div>
+                        <h3>Email</h3>
+                        <p>kesharma2121@gmail.com</p>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <i class="bx bx-message-rounded"></i>
+
+                    <div>
+                        <h3>Support</h3>
+                        <p>We're here to help.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <i class="bx bx-time"></i>
+
+                    <div>
+                        <h3>Response</h3>
+                        <p>Usually within 24 hours.</p>
+                    </div>
+
+                </div>
+
+            </div>
 
         </section>
 
-
-        <!-- FOOTER -->
-        <footer>
-            <p>
-                © 2026 MyWebsite. All rights reserved.
-            </p>
-        </footer>
 
     </main>
 
 
+
     <!-- ================= AUTH MODAL ================= -->
 
-    <div
-        class="auth-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-hidden="true">
+    <div class="auth-modal" aria-hidden="true">
 
-        <button
-            type="button"
-            class="close-btn-modal"
-            aria-label="Close authentication modal">
+        <div class="auth-box">
 
-            <i class="bxf bx-x"></i>
-
-        </button>
+            <button type="button" class="close-btn-modal">
+                <i class="bx bx-x"></i>
+            </button>
 
 
-        <!-- LOGIN FORM -->
 
-        <div class="form-box login">
+            <!-- ================= LOGIN ================= -->
 
-            <h2>Login</h2>
+            <div class="form-box login">
 
-            <form class="login-form" novalidate>
+                <div class="form-title">
 
-                <div class="input-box">
+                    <span>Welcome Back</span>
 
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        autocomplete="email"
-                        required>
+                    <h2>Login</h2>
 
-                    <i class="bxf bx-envelope"></i>
+                    <p>
+                        Login to continue exploring.
+                    </p>
 
                 </div>
 
 
-                <div class="input-box">
+                <form class="login-form">
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        autocomplete="current-password"
-                        minlength="6"
-                        required>
+                    <div class="input-box">
 
-                    <i class="bxf bx-lock"></i>
+                        <i class="bx bx-envelope"></i>
 
-                </div>
+                        <input
+                            type="email"
+                            class="login-email"
+                            placeholder="Email Address"
+                            required
+                        >
 
-
-                <p class="form-message login-message"></p>
+                    </div>
 
 
-                <button type="submit" class="btn">
-                    Login
-                </button>
+                    <div class="input-box">
+
+                        <i class="bx bx-lock-alt"></i>
+
+                        <input
+                            type="password"
+                            class="login-password"
+                            placeholder="Password"
+                            required
+                        >
+
+                        <i class="bx bx-show password-toggle"></i>
+
+                    </div>
 
 
-                <p>
-                    Don't have an account?
-
-                    <a href="#" class="register-link">
-                        Register
-                    </a>
-                </p>
-
-            </form>
-
-        </div>
-
-
-        <!-- REGISTER FORM -->
-
-        <div class="form-box register">
-
-            <h2>Register</h2>
-
-            <form class="register-form" novalidate>
-
-                <div class="input-box">
-
-                    <input
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        autocomplete="name"
-                        minlength="2"
-                        required>
-
-                    <i class="bxf bx-user"></i>
-
-                </div>
-
-
-                <div class="input-box">
-
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        autocomplete="email"
-                        required>
-
-                    <i class="bxf bx-envelope"></i>
-
-                </div>
-
-
-                <div class="input-box">
-
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        autocomplete="new-password"
-                        minlength="6"
-                        required>
-
-                    <i class="bxf bx-lock"></i>
-
-                </div>
-
-
-                <p class="form-message register-message"></p>
-
-
-                <button type="submit" class="btn">
-                    Register
-                </button>
-
-
-                <p>
-                    Already have an account?
-
-                    <a href="#" class="login-link">
+                    <button type="submit" class="form-btn">
                         Login
-                    </a>
-                </p>
+                        <i class="bx bx-right-arrow-alt"></i>
+                    </button>
 
-            </form>
+
+                    <p class="login-message"></p>
+
+
+                    <div class="switch-form">
+
+                        <span>
+                            Don't have an account?
+                        </span>
+
+                        <a href="#" class="register-link">
+                            Register
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- ================= REGISTER ================= -->
+
+            <div class="form-box register">
+
+                <div class="form-title">
+
+                    <span>Create Account</span>
+
+                    <h2>Register</h2>
+
+                    <p>
+                        Create your account to get started.
+                    </p>
+
+                </div>
+
+
+                <form class="register-form">
+
+                    <div class="input-box">
+
+                        <i class="bx bx-user"></i>
+
+                        <input
+                            type="text"
+                            class="register-name"
+                            placeholder="Full Name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-box">
+
+                        <i class="bx bx-envelope"></i>
+
+                        <input
+                            type="email"
+                            class="register-email"
+                            placeholder="Email Address"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-box">
+
+                        <i class="bx bx-lock-alt"></i>
+
+                        <input
+                            type="password"
+                            class="register-password"
+                            placeholder="Password"
+                            required
+                        >
+
+                        <i class="bx bx-show password-toggle"></i>
+
+                    </div>
+
+
+                    <button type="submit" class="form-btn">
+                        Create Account
+                        <i class="bx bx-right-arrow-alt"></i>
+                    </button>
+
+
+                    <p class="register-message"></p>
+
+
+                    <div class="switch-form">
+
+                        <span>
+                            Already have an account?
+                        </span>
+
+                        <a href="#" class="login-link">
+                            Login
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
 
         </div>
 
     </div>
 
 
-    <!-- ================= ACCOUNT MODAL ================= -->
+
+    <!-- ================= PROFILE DASHBOARD ================= -->
 
     <div
         class="account-modal"
-        role="dialog"
-        aria-modal="true"
-        aria-hidden="true">
+        aria-hidden="true"
+    >
 
-        <div class="account-card">
+        <div class="account-dashboard">
+
+
+            <!-- Close -->
 
             <button
                 type="button"
-                class="close-account-btn">
-
-                <i class="bxf bx-x"></i>
-
+                class="close-account-btn"
+            >
+                <i class="bx bx-x"></i>
             </button>
 
-            <h2>My Account</h2>
 
-            <div class="account-avatar">
-                U
+
+            <!-- ================= PROFILE HEADER ================= -->
+
+            <div class="dashboard-header">
+
+                <div class="account-avatar">
+                    U
+                </div>
+
+
+                <div class="dashboard-user-info">
+
+                    <span class="dashboard-label">
+                        My Profile
+                    </span>
+
+                    <h2 class="account-name">
+                        User Name
+                    </h2>
+
+                    <p class="account-email">
+                        user@email.com
+                    </p>
+
+
+                    <span class="profile-badge">
+
+                        <i class="bx bx-check-circle"></i>
+
+                        Verified Account
+
+                    </span>
+
+                </div>
+
             </div>
 
-            <p>
-                <strong>Name:</strong>
-                <span class="account-name">User</span>
-            </p>
 
-            <p>
-                <strong>Email:</strong>
-                <span class="account-email">
-                    user@example.com
+
+            <!-- ================= PROFILE STATS ================= -->
+
+            <div class="profile-stats">
+
+
+                <div class="stat-card">
+
+                    <i class="bx bx-user"></i>
+
+                    <div>
+
+                        <strong>1</strong>
+
+                        <span>Profile</span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <i class="bx bx-star"></i>
+
+                    <div>
+
+                        <strong>0</strong>
+
+                        <span>Favorites</span>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <i class="bx bx-time"></i>
+
+                    <div>
+
+                        <strong>Active</strong>
+
+                        <span>Status</span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ================= DASHBOARD OPTIONS ================= -->
+
+            <div class="dashboard-options">
+
+
+                <!-- Edit Profile -->
+
+                <button
+                    type="button"
+                    class="dashboard-option"
+                >
+
+                    <div class="option-icon">
+
+                        <i class="bx bx-edit"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Edit Profile
+                        </strong>
+
+                        <span>
+                            Update your profile information
+                        </span>
+
+                    </div>
+
+
+                    <i class="bx bx-chevron-right option-arrow"></i>
+
+                </button>
+
+
+
+                <!-- Security -->
+
+                <button
+                    type="button"
+                    class="dashboard-option"
+                >
+
+                    <div class="option-icon">
+
+                        <i class="bx bx-lock"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Security
+                        </strong>
+
+                        <span>
+                            Manage your account security
+                        </span>
+
+                    </div>
+
+
+                    <i class="bx bx-chevron-right option-arrow"></i>
+
+                </button>
+
+
+
+                <!-- Settings -->
+
+                <button
+                    type="button"
+                    class="dashboard-option"
+                >
+
+                    <div class="option-icon">
+
+                        <i class="bx bx-cog"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Settings
+                        </strong>
+
+                        <span>
+                            Customize your experience
+                        </span>
+
+                    </div>
+
+
+                    <i class="bx bx-chevron-right option-arrow"></i>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ================= DASHBOARD FOOTER ================= -->
+
+            <div class="dashboard-footer">
+
+
+                <span>
+
+                    <i class="bx bx-shield-check"></i>
+
+                    Your account is protected
+
                 </span>
-            </p>
+
+
+                <button
+                    type="button"
+                    class="dashboard-logout logout-btn"
+                >
+
+                    <i class="bx bx-log-out"></i>
+
+                    Logout
+
+                </button>
+
+
+            </div>
+
 
         </div>
 
     </div>
 
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div>
+
+                <a href="#" class="logo">
+                    <span>My</span>Website
+                </a>
+
+                <p>
+                    A simple modern web experience.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#collection">Collection</a>
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 MyWebsite. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script src="webiste.js"></script>
 
 </body>
+
 </html>
